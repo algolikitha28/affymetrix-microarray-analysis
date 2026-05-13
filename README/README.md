@@ -230,3 +230,66 @@ The workflow includes:
 
 The analysis successfully identified genes with significant expression differences and potential biomarker candidates between biological conditions.
 
+# Gene Network Construction
+
+A gene co-expression network was constructed using the top differentially expressed genes identified from the microarray analysis.
+
+The objective of the network analysis was to identify:
+- highly connected genes (hub genes)
+- co-expressed biomarker candidates
+- relationships between differentially expressed genes
+
+---
+
+## Network Construction Workflow
+
+```text
+Top Differentially Expressed Genes
+            ↓
+Expression Matrix Extraction
+            ↓
+Pearson Correlation Calculation
+            ↓
+Filtering Strong Correlations
+            ↓
+Gene Co-expression Network Construction
+            ↓
+Gene ID Mapping to Gene Symbols
+            ↓
+Network Visualization
+```
+
+---
+
+## Method Used
+
+1. Top differentially expressed genes were selected from the differential expression analysis.
+
+2. Pearson correlation coefficients were calculated between genes using normalized expression values.
+
+3. Weak correlations were removed using a correlation threshold.
+
+4. The filtered correlation matrix was converted into a gene interaction network using the `igraph` package in R.
+
+5. Affymetrix probe IDs were mapped to biological gene symbols using the `hgu95av2.db` annotation package.
+
+---
+
+## Packages Used
+
+- igraph
+- AnnotationDbi
+- hgu95av2.db
+
+---
+
+## Biological Interpretation
+
+In the generated network:
+- Nodes represent genes
+- Edges represent strong co-expression relationships
+- Highly connected genes may represent important biomarker candidates or regulatory genes
+
+The network helps in understanding gene-gene interactions and identifying biologically important genes involved in the studied condition.
+
+---
